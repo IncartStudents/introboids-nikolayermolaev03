@@ -3,17 +3,25 @@ using Plots
 
 mutable struct WorldState
     boids::Vector{Tuple{Float64, Float64}}
+    velocities:: Vector{Tuple{Float64, Float64}}
     height::Float64
     width::Float64
     function WorldState(n_boids, h, w)
         boids = [(rand(0:w), rand(0:h)) for _ in 1:n_boids]
-        new(boids, h, w)
+        speed = 2
+        velocities = [(rand(-1.0:0.1:1.0)*speed, rand(-1.0:0.1:1.0))] 
+        new(boids, velocities, h, w)
     end
 end
 
 function update!(state::WorldState)
-    state.boids[1] = state.boids[1] .+ 0.1
-    # TODO: реализация алгоритма
+    max_radius = 20
+    min_radius = 5
+    for i in 1:lenght(state.boids)
+        boid = state.boids[i]
+        velocitiy = state.velocities[i]
+    end
+    # TODO:     реализация алгоритма
     return nothing
 end
 
